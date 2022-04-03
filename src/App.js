@@ -17,23 +17,6 @@ function App() {
   };
 
 
-
-  const toggleTodoComplete = (todoId) => {
-    // setTodos(
-    //     todos.map(
-    //         todo => {
-    //           if(todo.id !== todoId) return todo;
-    //
-    //           return {
-    //             ...todo,
-    //             completed: !todo.completed,
-    //           }
-    //         }
-    //     )
-    // )
-  }
-
-
   return (
     <div className="App">
         <InputField textInput={textInput} handleInput={setTextInput} handleSubmit={addTask} />
