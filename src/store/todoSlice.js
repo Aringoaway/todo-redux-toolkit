@@ -7,8 +7,6 @@ const todoSlice = createSlice({
     },
     reducers: {
         addTodo(state, action) {
-            console.log(state);
-            console.log(action);
             state.todos.push({
                 id: new Date().toISOString(),
                 textInput: action.payload.textInput,
@@ -19,7 +17,7 @@ const todoSlice = createSlice({
 
         },
         toggleTodoComplete(state, action) {
-
+            state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
         }
     },
 });
