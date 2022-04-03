@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import { useState } from "react";
+
 import './App.css';
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const [textInput, setTextInput] = useState('');
+
+  const addTodo = () => {
+    if (textInput.trim().length) {
+      setTodos([
+        ...todos,
+        {
+          id: new Date().toISOString(),
+          textInput,
+          completed: false,
+        }
+      ])
+      setTextInput('');
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label>
+        <input value={textInput} onChange={(e) => setTextInput(e.target.value)}/>
+        <button onClick={addTodo}>Add Todo</button>
+      </label>
+
+      <ul>
+        {
+          todos.map(todo =>
+          <li key={todo.id}>
+            <input type="checkbox"/>
+            <span>{todo.textInput}</span>
+            <span style={{color: 'red'}}>&times;</span>
+          </li>
+          )
+        }
+      </ul>
+
     </div>
   );
 }
