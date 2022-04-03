@@ -1,7 +1,7 @@
 const InputField = ({ textInput,  handleInput, handleSubmit }) => {
     return (
         <label>
-            <input type="text" value={textInput} onChange={(e) => handleInput(e.target.value)}/>
+            <input placeholder="Add todo" type="text" value={textInput} onChange={(e) => handleInput(e.target.value)}/>
             <button onClick={handleSubmit}>Add Todo</button>
         </label>
     )
